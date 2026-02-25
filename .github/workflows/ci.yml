@@ -89,12 +89,9 @@ jobs:
           # køre script når actions har SSH'et ind i VM
           script: |
             cd ~/todo-app
-            
-            # Puller nyeste images til at compose i prod
+          
             docker compose -f docker-compose.prod.yml pull
             
-            # Restarter compose (containere) med de nyeste images
             docker compose -f docker-compose.prod.yml up -d
             
-            # Fjerner gamle images (clean up)
             docker image prune -f
