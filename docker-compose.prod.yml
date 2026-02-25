@@ -1,3 +1,4 @@
+# Starter alle containere på samme tid i produktion (Main)
 services:
   db:
     image: postgres:17
@@ -9,7 +10,7 @@ services:
       - pgdata:/var/lib/postgresql/data
 
   app:
-    image: ghcr.io/tgrundtvig/todo-app:latest
+    image: ghcr.io/anoepus/todo-app:latest
     environment:
       DATABASE_URL: jdbc:postgresql://db:5432/tododb
       DATABASE_USERNAME: postgres
@@ -18,7 +19,7 @@ services:
       - db
 
   frontend:
-    image: ghcr.io/tgrundtvig/todo-app-frontend:latest
+    image: ghcr.io/anoepus/todo-app-frontend:latest
     ports:
       - "80:80"
     depends_on:
